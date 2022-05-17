@@ -1,8 +1,8 @@
-## Description
+# Nest Boot
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+快速搭建基于[NestJS](https://github.com/nestjs/nest)服务端项目，包含常见的服务端特性，开箱即用。
 
-## Installation
+## 安装依赖
 
 ```bash
 $ npm install
@@ -10,42 +10,29 @@ $ npm install
 
 ### Docker
 
-项目中提供了 `docker-compose.yml` 用于启动 Mysql 数据库 Docker。
+确保你已经安装 Docker 后，执行：
 
-`docker-compose up`
+```bash
+docker-compose up
+```
+
+项目中提供了 `docker-compose.yml`，上述命令会启动一个 MySQL 镜像并初始化数据，详见`create_db.sql`。
 
 停止 Docker 运行：
 
-`docker-compose down`
-
-## Running the app
-
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+docker-compose down
 ```
 
-## Test
+## 启动服务器
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+# 开发模式
+npm run start:debug
 ```
 
-# TKE
+# 容器部署
 
-创建负载时，需设置环境变量：
+创建负载时，需设置容器的环境变量：
 
 - SERVER_ENV=prod
