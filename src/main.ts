@@ -4,14 +4,10 @@ import { AppModule } from './app.module';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { NativeExceptionFilter } from './common/filters/native-exception.filter';
 import { GlobalValidationPipe } from './common/pipes/validation.pipe';
-import { loggerMiddleware } from './common/middleware/logger.middleware';
 import { AuthGuard } from './common/guards/auth.guard';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
-  // 全局中间件：挂载logger
-  app.use(loggerMiddleware);
 
   // 挂载全局异常过滤器
   // 这里传参顺序会影响nest的查找filter的顺序，异常类继承关系中父类要放在前

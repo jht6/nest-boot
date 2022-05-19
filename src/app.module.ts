@@ -1,6 +1,7 @@
-import { Module } from '@nestjs/common';
+import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { loggerMiddleware } from './common/middleware/logger.middleware';
 import { ENV_FILE } from './common/const/index';
 import { CoreModule } from './core/core.module';
 import { AppController } from './app.controller';
@@ -81,4 +82,8 @@ const getDBConfig = (configService: ConfigService) => {
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(loggerMiddleware).forRoutes('*');
+  }
+}
