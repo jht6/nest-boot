@@ -14,7 +14,7 @@ export function loggerMiddleware(req: ReqX, res: Response, next: NextFunction) {
     uuid,
     create_time: dateToLocalString(new Date()),
     host: req.hostname,
-    path: req.path,
+    path: req.originalUrl,
     http_method: req.method,
     http_params: JSON.stringify(req.query),
     http_payload: JSON.stringify(req.body),
